@@ -63,7 +63,7 @@
             <!--过滤器-->
                 --vue支持类似于linux系统那样的管道，允许在后面添加过滤符，还允许过滤器串联，还允许过滤器传递参数               
                     {{example| filter1 | filter2 }}  过滤器串联
-                    {{example| filter a b}}  传参数
+                    {{example| filter a b}}  传参数，a b参数用空格隔开
                     {{example|toUpperCase}}  最基础的过滤器--全部转换为大写
                     
     4、3 指令
