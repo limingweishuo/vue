@@ -66,7 +66,31 @@
                     {{example| filter a b}}  传参数，a b参数用空格隔开
                     {{example|toUpperCase}}  最基础的过滤器--全部转换为大写
                     
-    4、3 指令
+    4、3分隔符--在Vue中使用{{ 内容 }}作为普通文本的插值符号，{{{}}}作为html文本的插值符号
+        --Vue.config.delimiters 已失效
+        --现使用： delimiters: ['%{', '}']，示例如下
+            <body>
+                <div id="app">
+                    <p>%{ message }</p>
+                    <p>%{ message01 }</p>
+                </div>
+                <script>
+                    var app = new Vue({
+                        delimiters: ['%{', '}'],
+                        el: "#app",
+                        data: {
+                            message: 'Hello vue.js',
+                            message01: 'Hello liming'
+                        }
+                    })
+
+                    let b = 2;
+                    console.log('区块内b=',b);
+                </script>
+            </body>
+        --Vue.config.unusafeDelimiters 也已失效
+        --现使用 v-html v-text指令，故需要自己斟酌使用，暂时无示例，不过和django语法无冲突
+    4、4 指令
         指令：带有v-前缀的特殊特性，其值限定为绑定表达式，即javascript表达式和过滤器
         指令的作用：当表达式的值发生变化时，这个变化也发生在DOM上
             <div v-if="show">DFFE</div>
