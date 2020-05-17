@@ -1,0 +1,11 @@
+1、前端和服务端模块
+  --前端：登录、添加图书、图书列表
+  --服务端：用户API、图书API、异常
+
+2、前端技术栈
+  --vue element-ui vuex vue-router vue-cli vue-element-admin
+  
+3、服务端
+  --jwt epub mysql multer xml2js adm-zip node express
+  
+4、
