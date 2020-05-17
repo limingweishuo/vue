@@ -1,0 +1,95 @@
+1、脚手架vue-cli使用--npm install -g vue-cli
+  --没有网，或者在离线情况下如何安装和处理化vue项目
+    --01、从https://github.com/vuejs-templates/webpack下载模板，解压到文件夹下webpack_develop
+    --02、vue init webpack-develop vuedemo_01等待下载完毕即可
+    --03、把下载下来的模板放到C:\Users\lwx898295\.vue-templates\webpack-develop中，在cmd中运行vue init webpack-develop vuedemo_01 --offline
+    --04、初始化项目的一些选项
+         Project name vuedemo_01
+         Project description A Vue.js project
+         Author lwx898295 <liming199@huawei.com>
+         Vue build (Use arrow keys)
+         Vue build standalone
+         Install vue-router? Yes
+         Use ESLint to lint your code? No
+         Set up unit tests No
+         Setup e2e tests with Nightwatch? No
+         Should we run `npm install` for you after the project has been created? (recommended) npm      
+    --05、cd vuedemo_01 再 npm run dev  运行启动服务器
+    --06、输入http://localhost:8080
+    
+2、在src/components文件夹下建立dya01文件夹建立helloworld01.vue文件，输入内容如下
+  <template>
+    <div id="vue">Hello Vue.js! {{ message }}</div>
+  </template>
+
+  <script type="text/javascript">
+    export default { //这里需要将模块引出，可在其他地方使用
+      name: "helloworld02",
+      data (){ //注意：data即使不需要传数据，也必须return,否则会报错
+        return {
+          message: "啦啦啦啦啦"
+        }
+      }
+    }
+  </script>
+
+  <style type="text/css">
+    #vue{
+      color: green;
+      font-size: 28px;
+    }
+  </style>
+  
+3、在项目创建时跟随生成的HelloWorld.vue文件的template中加入链接
+  <h1>
+    <router-link to="day01">跳转至HelloVue</router-link>
+  </h1>
+  
+4、在src/components/day01/helloworld01.vue中加入
+  <template>
+    <div id="vue">Hello Vue.js! {{ message }}</div>
+  </template>
+
+  <script type="text/javascript">
+    export default { //这里需要将模块引出，可在其他地方使用
+      name: "helloworld02",
+      data (){ //注意：data即使不需要传数据，也必须return,否则会报错
+        return {
+          message: "啦啦啦啦啦"
+        }
+      }
+    }
+  </script>
+
+  <style type="text/css">
+    #vue{
+      color: green;
+      font-size: 28px;
+    }
+  </style>
+  
+5、在src/router/index.js中加入
+  import Vue from 'vue'
+  import Router from 'vue-router'
+  import HelloWorld from '@/components/HelloWorld'
+  import helloworld02 from '@/components/day01/helloworld01'
+
+  Vue.use(Router)
+
+  export default new Router({
+    mode: 'history',
+    routes: [
+      {
+        path: '/',
+        name: 'HelloWorld',
+        component: HelloWorld
+      },
+	    {
+        path: '/day01',
+        name: 'helloworld01',
+        component: helloworld02
+      }
+    ]
+  })
+  
+  6、再使用npm run dev
