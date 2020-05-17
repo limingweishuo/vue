@@ -1,0 +1,52 @@
+01、技术栈
+  --vue+django前后端分离技巧
+  --彻底玩转restful api开发流程
+  --django功能实现及核心源码分析
+  --sentry线上系统的错误日志监控和警告
+  --第三方登录和支付宝集成
+  --本地调试远程服务器技巧
+  
+02、课程组成
+  --vue前端项目
+  --django 系统实现前台功能
+  --xadmin后台管理系统
+  
+03、django rest framework技能
+  --apiview的方式实现api
+  --genericview的方式实现api接口
+  --viewset和router方式实现api接口和url配置
+  --django_filter、search_filter、分页
+  --通用mixins
+  
+04、权限和认证
+  --authentication用户认证设置
+  --动态设置permission、authentication
+  --validators实现字段验证
+  
+05、序列化和表单验证
+  --serializer
+  --modelserializer
+  --动态设置serializer
+  
+06、支付、登录和注册
+  --json web token实现登录
+  --手机注册
+  --支付宝支付
+  --第三方登录
+  
+07、进阶
+  --核心源码解读
+  --文档自动化管理
+  --django framework缓存
+  --throttling对用户和ip进行限速
+  
+08、日常开发问题
+  --本地不能重现的bug
+  --api接口出错不能及时发现或找不到错误栈
+  --api文档管理
+  --大量url配置导致难以管理
+  --接口不及时更新文档导致不知道如何去测试，但写文档会花费大量时间
+  --为防止爬虫需要限制对api访问频率
+  --某些数据需要放入缓存，加速api访问速度，比如商品数据变动比较小可以放入缓存
+  
+09、
