@@ -1,0 +1,143 @@
+1、springmvc简介
+  --表现层：springmvc
+    --接收来自浏览器的http请求及请求参数，同时渲染查询结果/处理结果到浏览器
+    --
+  --业务层：spring
+    --接收来自springmvc的参数，实现逻辑，根据需要从持久层mybatis获取数据，并返回数据给springmvc
+  --持久层：mybatis
+    --接收来自spring的参数，查询对应数据进行响应，返回给spring
+    
+2、mvc--model|模型|javabean/view|视图|jsp/controller|控制器|
+  --通过注解让一个java类成为处理请求的控制器，无需实现任何接口，restful编程风格
+  
+3、springmvc清晰的角色划分
+  --前端控制器：DispatcherServlet
+  --请求到处理器映射：HandlerMapping
+  --处理器适配器：HandlerAdapter
+  --视图解析器：ViewResolver
+  --处理器或页面控制器：Controller
+  --验证器：Validator
+  --命令对象：Command 请求参数绑定的对象
+  --表单对象：Form Object 提供给表单展示和提交到的对象就叫表单对象
+  
+4、springmvc其它的一些优点
+  --分工灵活，扩展方便
+  --springmvc入口是servlet不是filter，springmvc基于方法设计，同时支持jsr303，处理ajax更加方便。springmvc开发效率低于struts但是执行效率更高
+  
+5、建立maven项目
+  --建立项目file-new-project-maven
+  --配置maven时需要自己手动配置自己的maven，注意镜像的使用和配置
+  
+06、新建项目配置
+  --在src/main项目下新增resources和java两个文件夹，在java文件夹右击Mark Directory As 选择Sources Root，在resources上右击Mark Directory As 选择ReSources Root
+  --增加pom.xml配置
+    <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <spring.version>5.0.2.RELEASE</spring.version>
+    </properties>
+
+    <dependencies>
+      <!-- 添加spring支持 -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context-support</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aspects</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+
+      <!-- 添加sevlet支持 -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+      </dependency>
+      <!-- 添加jsp支持 -->
+      <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>javax.servlet.jsp-api</artifactId>
+        <version>2.3.1</version>
+      </dependency>
+    </dependencies>
+  --配置前端控制器
+    --如果dtd文件链接为红色可以在idea或者eclipse配置 url: location 两个键值对
+    --最简易配置xml
+      <web-app>
+        <display-name>Archetype Created Web Application</display-name>
+
+        <servlet>
+          <servlet-name>dispatcherServlet</servlet-name>
+          <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+          <servlet-name>dispatcherServlet</servlet-name>
+          <url-pattern>/</url-pattern>
+        </servlet-mapping>
+      </web-app>
+    --配置resources文件夹下springmvc.xml文件
+      <?xml version="1.0" encoding="UTF-8"?>
+      <beans  xmlns="http://www.springframework.org/schema/beans"
+              xmlns:mvc="http://www.springframework.org/schema/mvc"
+              xmlns:context="http://www.springframework.org/schema/context"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.springframework.org/schema/beans
+                                http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                                http://www.springframework.org/schema/context
+                                http://www.springframework.org/schema/context/spring-context-4.1.xsd
+                                http://www.springframework.org/schema/mvc
+                                http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
+      </beans>
+    --配置服务器
+      --idea社区版smart tomcat设置tomcat服务器
+
+  
+  
+  
+  
