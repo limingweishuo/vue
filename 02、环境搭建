@@ -1,0 +1,22 @@
+1、pycharm安装和mysql启动
+  --pycharm安装，多次安装不再赘述
+  --mysql：启动失败 net start mysql，如果发生拒绝访问系统错误5，则代表需要管理员权限启动cmd，再启动mysql
+  --mysql启动命令：net start mysql 或者 mysqld --console
+  
+2、mysql忘记密码
+  --where mysql 查询mysql安装位置
+  --net stop mysql 停止mysql
+  --mysqld --skip-grant-tables 设置不需要密码登录数据库
+    mysqld --console --skip-grant-tables --shared-memory 在高版本中设置命令如下
+  --此时本窗口已经无法点击，需重新管理员权限打开新窗口
+  --重新进入mysql安装目录，输入：
+    --mysql 进入数据库
+    --flush privileges; 刷新权限
+    --set password for root@localhost='admin'; 设置密码为admin
+    --exit; 退出
+  --net start mysql; 重启数据库
+  --mysql -u root -p
+  --输入密码即可
+
+3、vue 和 react安装
+  --
