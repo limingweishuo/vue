@@ -84,7 +84,7 @@
         
         示例02：字面量定义时，箭头函数中this是指定义该变量所使用的对象这里不是指person，而是指定义person的var，var其实是window对象所以this指window对象
 				        而正常定义的function()中this是指person本身
-				--var person = {
+          --var person = {
               name : "日天",
               age : 30,
               fav : (str)=>{
@@ -105,4 +105,4 @@
           console.log(person01.fav('喜欢avlalal')); //out: 喜欢avlalal
               
         示例03：             
-      
+               
