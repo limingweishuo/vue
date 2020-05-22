@@ -104,5 +104,23 @@
           };
           console.log(person01.fav('喜欢avlalal')); //out: 喜欢avlalal
               
-        示例03：             
+        示例03：在箭头函数中arguments不能使用[arguments就是当函数没有形参，但是外部使用时传入了参数，此时就是需要我们使用arguments在函数内部接受
+	        传入的参数]
+	  --var person01 = {
+                name : "日天a",
+                age : 30,
+                fav : function(){
+                    console.log(arguments); 
+                }
+            };
+            console.log(person01.fav(1, 2, 3));
+		
+            var person = {
+                name : "日天",
+                age : 30,
+                fav : ()=>{
+                    console.log(arguments); 
+                }
+            };
+            console.log(person.fav(1, 2, 3)); 
                
