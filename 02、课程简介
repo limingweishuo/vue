@@ -22,12 +22,12 @@
           console.log(a)
         示例02：let使用相当于创建新的，新增了元素；var是指向新的，之前的不要还是一个
           var a = [];
-			    for(let i = 0; i < 10; i++){
-				      a[i] = function(){
-					        console.log(i);
-				      };
-			    }
-			    a[6]();
+          for(let i = 0; i < 10; i++){
+              a[i] = function(){
+                  console.log(i);
+              };
+          }
+          a[6]();
         示例03：
         
       --2、const
@@ -38,9 +38,9 @@
           --这里使用反引号 `原始字符串` + ${待嵌套字符串} 嵌套的方式将字符串进行拼接，有点类似于linux/shell编程
           --使用转义字符可以使用反引号本体
               var a = 1;
-			        var b = 2;
-			        var str01 = `\`YO\`哈哈哈${a}嘿嘿嘿${b}`;
-			        console.log(str01)
+              var b = 2;
+              var str01 = `\`YO\`哈哈哈${a}嘿嘿嘿${b}`;
+              console.log(str01)
               
       --4、箭头函数--不一定非要使用箭头函数，只是希望能够看懂别人的代码，就和lambda一样              
         --基本格式：先定义后调用
@@ -58,21 +58,51 @@
             它们的调用方式一致都是 a(6, 2) 值都是8
             
             var a = 1;
-			      var b = 2;
-			      var str01 = (a, b) => a+b;
-			      console.log(str01(a, b));
+            var b = 2;
+            var str01 = (a, b) => a+b;
+            console.log(str01(a, b));
             
-      --5、字面量方式创建对象
+      --5、字面量方式创建对象 及 在字面量方式中使用箭头函数
+        示例01：字面量方式定义时使用和不使用箭头函数
         --var person = {
-				      name : "日天",
-				      age : 30,
-				      fav : function(str){
-					        return str;
-				      }
-			    };
-			    console.log(person.fav('喜欢av'));
+              name : "日天",
+              age : 30,
+              fav : function(str){
+                  return str;
+              }
+          };
+          console.log(person.fav('喜欢av'));
+					
+			  --var person = {
+              name : "日天",
+              age : 30,
+              fav :(str)=>{
+                  return str;
+              }
+          };
+          console.log(person.fav('喜欢av'));
         
-        
+        示例02：字面量定义时，箭头函数中this是指定义该变量所使用的对象这里不是指person，而是指定义person的var，var其实是window对象所以this指window对象
+				        而正常定义的function()中this是指person本身
+				--var person = {
+              name : "日天",
+              age : 30,
+              fav : (str)=>{
+                  console.log(this); //out: windows对象
+                  return str;
+              }
+          };
+          console.log(person.fav('喜欢av')); //out: 喜欢av
+			
+          var person01 = {
+              name : "日天a",
+              age : 30,
+              fav : function(str){
+                  console.log(this.name); //out: 日天a
+                  return str;
+              }
+          };
+          console.log(person01.fav('喜欢avlalal')); //out: 喜欢avlalal
               
-              
+        示例03：             
       
