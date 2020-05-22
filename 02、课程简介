@@ -1,0 +1,78 @@
+1、视频作为辅助性复习工具 和 博客每个人都要去写
+
+2、html + css + js提纲挈领
+  html：语义化，定义结构
+  css：样式表现
+  js：定义行为[ESMAscript + JSdom + dom]
+    --这里ESMAscript主要就是for if switch那些东西，JSdom和dom就是那些操作对象的事儿
+    
+3、jquery
+  固定行为固定化
+  
+4、vue--react很难，一般很大型公司使用
+  --01、ES6简单语法
+      --1、let和var
+        --let作用域为块级作用域，如果使用{}包裹，则无法在作用域之外访问let变量
+        --var声明的变量可以无视块作用域的限制随意使用，很显然是有问题的        
+        --let不能重复声明，但是var可以覆盖/重复声明，这样限制就不严格
+        --let不存在变量提升，var存在变量提升[声明之前可以使用，值为undefined]
+        
+        示例01：以下示例表名let是有限制区域的
+          {let a= 12;}
+          console.log(a)
+        示例02：let使用相当于创建新的，新增了元素；var是指向新的，之前的不要还是一个
+          var a = [];
+			    for(let i = 0; i < 10; i++){
+				      a[i] = function(){
+					        console.log(i);
+				      };
+			    }
+			    a[6]();
+        示例03：
+        
+      --2、const
+        --声明一个只读的常量，不能修改，并且应该在创建变量时立即初始化
+        --const PI = 3.1415926;
+        
+      --3、模板字符串--类似于linux字符拼接
+          --这里使用反引号 `原始字符串` + ${待嵌套字符串} 嵌套的方式将字符串进行拼接，有点类似于linux/shell编程
+          --使用转义字符可以使用反引号本体
+              var a = 1;
+			        var b = 2;
+			        var str01 = `\`YO\`哈哈哈${a}嘿嘿嘿${b}`;
+			        console.log(str01)
+              
+      --4、箭头函数--不一定非要使用箭头函数，只是希望能够看懂别人的代码，就和lambda一样              
+        --基本格式：先定义后调用
+            (num1, num2) => {num1+num2}
+            
+        --示例：
+            原始函数：
+                var a = function(num1, num2){
+                  return num1 + num2;
+                };
+                
+            箭头函数：
+                var a = (num1, num2)=>{num1 + num2};
+                
+            它们的调用方式一致都是 a(6, 2) 值都是8
+            
+            var a = 1;
+			      var b = 2;
+			      var str01 = (a, b) => a+b;
+			      console.log(str01(a, b));
+            
+      --5、字面量方式创建对象
+        --var person = {
+				      name : "日天",
+				      age : 30,
+				      fav : function(str){
+					        return str;
+				      }
+			    };
+			    console.log(person.fav('喜欢av'));
+        
+        
+              
+              
+      
