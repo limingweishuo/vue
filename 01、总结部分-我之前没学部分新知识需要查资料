@@ -1,0 +1,92 @@
+01、CBV
+  --在视图里使用类处理请求
+    FBV
+  --在视图里使用函数处理请求
+  
+02、APIView
+  class BookView(APIView): pass
+  url(r'^books/$', views.BookView.as_view(), name="books"),
+  url(r'^books/$', View类下的view, name="books")
+  一旦访问books/: view(request/旧的request)====APIView类下的dispatch()====请求方式对应的实例方法()
+  
+03、def dispatch():
+        # 初始化操作
+        # (1)构建新的request，示例如下：
+        self.request=self.initial_request()  # 通过initial_request()实例化返回一个对象
+        self.request._request  # 构建了一个新的实例对象之后取数据的原始方法
+        self.request.GET  # 构建了一个新的实例对象之后取get请求的数据
+        self.request.data  # 构建了一个新的实例对象之后取put请求的数据
+        
+        # (2)执行组件
+        # 认证、权限、频率
+        # 认证：request.user
+        self.initial(request, *args, **kwargs) ====[相当于执行以下组件]
+          # 认证组件
+          self.perform_authentication(request)
+          # 权限组件
+          self.check_permissions(request)
+          # 频率组件
+          self.check_throttles(request)
+          
+        # (3)分发请求
+          if request.method.lower() in self.http_methos_names:
+            handler = getattr(self, request.method.lower(), self.http_method_not_allowed)
+          else:
+            handler = self.http_method_not_allowed
+            
+          response = handler(request/初始化之后都是新的request, *args, **kwargs)
+          return response
+
+4、序列化组件
+  class PublishSerializers(serializers.Serializer):
+    name = serializers.CharField()
+    email = serializers.CharField()
+  
+  # queryset或者model对象--->json对象
+  ps = PublishSerializers(queryset, many=True)  # 将查询结果queryset类型数据的进行序列化
+  ps.data # [{}, {}, {}...]  # 获取序列化对象每一条查询结果就是一个{}，查询结果用list保存，这样可以保证数据查询的顺序
+  
+  ps = PublishSerializers(model_obj, many=True)  # 将查询结果model_obj类型数据的进行序列化
+  ps.data # {}  # 序列化对象.data类型就是字典类型{}
+  
+  # json数据--->数据库表的一条记录
+  # 添加操作
+  ps = PublishSerializers(data=request.data)
+  if ps.is_valid():  # is_valid()判断不能省略
+    ps.save() # create
+  
+  # 更新操作，这里所使用的是继承serializers.Serializer创建的类
+  class PublishSerializers(serializers.ModelSerializer):
+    class Meta:
+      model = Publish
+      fields="__all__"
+  model_obj  # 更新哪条数据必须先取出该数据对象
+  ps = PublishSerializers(model_obj, data=request.data)
+  if ps.is_valid():  # is_valid()判断不能省略
+    ps.save() # update
+  
+5、视图组件
+  # 版本1：增删改查完全自己实现
+  # 版本2：mixIn混合类
+  pip install djangorestframework
+  from rest_framework import mixins
+  from rest_framework import generics
+  # 版本3：基于通用类
+  # 版本4：基于url
+
+6、认证权限频率
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
