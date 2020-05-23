@@ -1,0 +1,30 @@
+1、浏览器中javascript可以做什么
+  --操作dom元素
+  --发送ajax请求--原生ajax  --  xmlhttprequest
+  --bom交互：提供页面跳转、历史记录、控制台和打印日志
+  --ecmascript(js的核心语言，用来定义变量、函数等)
+  
+2、浏览器中javascript不可以做什么
+  --不能操作文件/文件夹[CURD]
+  --没办法操作操作系统
+  --以上缺点主要是因为出于安全考虑，尽管js存放在服务器上但是实际上是服务器发送js到浏览器中，执行也在浏览器上
+  --javascript运行在浏览器的js引擎上，语言是ecmascript
+  
+3、node定义
+  --node可以接受客户端所有请求，快速给出响应，因此就可以做网站
+  --node可以做中间层分发调用数据接口，比如对于一个java数据接口，node调用后做html拼装，然后渲染到页面，如果直接调用java接口显示，则会造成服务器很大的压力
+  --一言以蔽之，node就是一个javascript运行环境，不是一门语言也不是一个框架，可以用来开发服务端应用程序、web系统，特点：体积小、快速、高性能
+  
+4、node中npm
+  --javascript中包管理工具。相当于python中的pip，java中的maven/gradle
+  --npm升级命令：npm install npm@lastest -g
+  --如果不能使用前面加sudo：sudo npm install npm@lastest -g
+  --npm初始化int：npm init  //初始化之后就是一个package.json问及那
+  --npm安装包：npm install jquery --save  //--save是指将下载之后的包配置到json中去
+  --npm卸载包：npm uninstall jquery --sava  //--save表示将配置从package.json的dependencies中除去
+  
+  --很多时候node_modules文件夹中那么多包是不能上传到git或者用于版本控制的，所以可以事先删除所有的包，package.json中配置不要删了
+    再使用npm install来进行项目中包的安装和配置，此时删除是使用手动方法而不是npm uninstall --save这样会删掉配置导致初始化项目配置失败
+    
+  
+  
