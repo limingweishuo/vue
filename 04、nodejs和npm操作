@@ -20,11 +20,177 @@
   --npm升级命令：npm install npm@lastest -g
   --如果不能使用前面加sudo：sudo npm install npm@lastest -g
   --npm初始化int：npm init  //初始化之后就是一个package.json问及那
+                 npm initial --yes  //初始化项目 这种方式能够让项目默认创建，不需要一项一项询问
   --npm安装包：npm install jquery --save  //--save是指将下载之后的包配置到json中去
-  --npm卸载包：npm uninstall jquery --sava  //--save表示将配置从package.json的dependencies中除去
+  --npm本地安装：npm install 包名@版本 --save-dev
+  --npm全局安装 npm install 包名@版本 -g
+  --npm卸载包：npm uninstall jquery --save  //--save表示将配置从package.json的dependencies中除去
   
   --很多时候node_modules文件夹中那么多包是不能上传到git或者用于版本控制的，所以可以事先删除所有的包，package.json中配置不要删了
     再使用npm install来进行项目中包的安装和配置，此时删除是使用手动方法而不是npm uninstall --save这样会删掉配置导致初始化项目配置失败
     
+5、webpack--ES6语法
+  --只有先导出才能导入
+  --webpack就是一个打包工具，将复杂的各种前端文件打包成几类文件
+  --https://www.swiper.com.cn/  前端交互组件网站
+  --https://babeljs.io/  将ES6转化为ES5代码
+  
+6、四种模块化方案
+  --AMD
+  --CMD
+  --ES6Module
+  --Commonjs：node.js就是使用这个模块方案
+  
+ 7、vuejs优点
+   --使用虚拟DOM
+   --老男孩项目中vue讲的基础，所以可以自己找一个视频学习，还有就是主要目的是学习如何交互django和vue
+   --渐进式框架：
+   --一个vue只能绑定一个vue，且ES6中定义类时需要同步定义constructor{} 
+   --vue是轻量级框架，所以非常适合单页面应用，见示例：掘金/网易云界面等[ip/#/ ip/#/app01 ip/#/app02 ip/#/app03]
+   --不要瞧不起单页面应用，通过多级路由单页面应用可以做很多事情
+   --适合单页面应用，不是说只能做单页面，拓展性还是很好的
+   
+ 8、单页面应用 和多页面应用
+   --单页面：SinglePage Web Application，SPA
+     --组成：一个外壳页面和多个页面片段组成
+     --资源共用(css,js)：共用，只需在外壳部分加载
+     --刷新方式：页面局部刷新或更改
+     --用户体验：页面片段间的切换快，用户体验良好
+     --转场动画：容易实现
+     --数据传递：容易
+     --搜索引擎优化(SEO)：需要单独方案、实现较为困难、不利于SEO检索 可利用服务器端渲染(SSR)优化
+     --试用范围：高要求的体验度、追求界面流畅的应用
+     --开发成本：较高，常需借助专业的框架
+     --维护成本：相对容易
+     --url 模式：a.com/#/pageone  a.com/#/pagetwo
+     
+   --多页面：MultiPage Application，MPA
+     --组成：多个完整页面构成
+     --资源共用(css,js)：不共用，每个页面都需要加载
+     --刷新方式：整页刷新
+     --用户体验：页面切换加载缓慢，流畅度不够，用户体验比较差
+     --转场动画：无法实现
+     --数据传递：依赖 url传参、或者cookie 、localStorage等
+     --搜索引擎优化(SEO)：实现方法简易
+     --试用范围：适用于追求高度支持搜索引擎的应用
+     --开发成本：较低 ，但页面重复代码多
+     --维护成本：相对复杂
+     --url 模式：a.com/pageone.html  a.com/pagetwo.html
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
