@@ -39,8 +39,38 @@
       var dog = new AnimalPro('日天', 18)
       dog.showName()  //这里说明一下，在哪里定义回头console输出提示就在哪一行，这里就是在35行，如果是dog.fav()则提示在31行
     
-4、ES6创建对象
-  --
+4、ES6使用类，区别于ES5的构造函数--都是使用new来实例化，而不是简单定义一个function方法
+  --基本构建：这里构造器在new Animal类对象时会直接调用constructor函数进行实例化
+    class  Animal{
+        constructor(){           
+        }
+    }
+    
+    var d = new Animal();//会直接调用Animal()下constructor() 
+    
+  --基本构建中类方法和构造器之间不能有逗号，这也是独一无二的，和字面量方式创建等其他进行区别
+    class Animal{
+        constructor(name, age){
+            this.name = name;
+            this.age = age;
+        }
+        ShowName(){
+            console.log(this.name);
+        }
+    }
+    var d = new Animal('liming', 28);
+    d.ShowName()
+    
+5、自执行函数|闭包函数
+  --基本模式：就是当引入一个模块时，会自动执行该函数挂载到windows上
+    (function(){})
+  
+6、module.export
+  --表示可以在外部调用该函数
+  --之所以Jquery可以使用$符号调用对象操作元素，是因为Jquery把自己挂载到windows.Jquery和windows.$符号上了
+    在jquery源码最后部分有 window.jQuery = window.$ = jQuery这样一句话，就是挂载
+  --示例如下：
+    $('div').click().click()
 
 
 
