@@ -1,0 +1,68 @@
+1、箭头函数小结
+  --function(){} ==== ()=>{}
+  --箭头函数的坑：
+    --this指代的对象不是对象本身，而是定义该对象的类型变量
+    --箭头函数会导致arguments传入失败
+    
+2、对象的单体模式
+  --除了key:value/箭头函数/直接定义的方式也是可行的，示例如下：
+  --var person01 = {
+        name : "日天a",
+        age : 30,
+        fav(){
+            console.log(arguments); 
+        }
+    };
+    console.log(person01.fav(1, 2, 3));
+    
+  --对象的单体模式，示例如下：
+      fav(){
+          console.log(arguments); 
+      }
+
+3、构造函数的方式创建对象--ES5构造函数，面向对象的方式
+  --不同于函数，构造方法需要函数名首字母大写
+  --其次，我们一般不在构造函数中直接嵌套定义函数this.fav = function(){}，而是使用Animal.prototype.showName = function(){}形式定义属性
+  --示例如下：
+      function AnimalPro(name, age){
+          this.name = name;
+          this.age = age;
+          this.fav = function(){ //这种定义函数方式不推荐，这里只是为说明而已
+              console.log(this.name);
+          };
+      }
+      
+      //这里AnimalPro.prototype.函数名就是在给构造函数AnimalPro添加对象
+      AnimalPro.prototype.showName = function(){
+          console.log(this.name);
+      }
+      var dog = new AnimalPro('日天', 18)
+      dog.showName()  //这里说明一下，在哪里定义回头console输出提示就在哪一行，这里就是在35行，如果是dog.fav()则提示在31行
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
