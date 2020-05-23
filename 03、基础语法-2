@@ -39,7 +39,8 @@
       var dog = new AnimalPro('日天', 18)
       dog.showName()  //这里说明一下，在哪里定义回头console输出提示就在哪一行，这里就是在35行，如果是dog.fav()则提示在31行
     
-
+4、ES6创建对象
+  --
 
 
 
