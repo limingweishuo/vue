@@ -22,7 +22,9 @@
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'MxShop',
+            # 数据库创建--判断原来不存在，则创建数据库，并指定编码格式和校验集
+            # create database if not exists 数据库名称 default character set utf8 collate utf8_general_ci;
+            'NAME': 'MxShop',  # 这里数据库必须提前创建，命令是
             'HOST': '127.0.0.1',
             'USER': 'root',
             'PASSWORD': '**********',  #不怕密码泄露，反正你也打不开
@@ -48,9 +50,27 @@
   --重新登陆：mysql -u root -p
   --输入密码即可
   
-04、  
+04、数据库驱动安装
+  --配置并创建数据库之后，直接运行项目会出错，需要安装驱动
+  --安装pymysql
+  --在项目根目录下__init__.py中加入
+    import pymysql
+    pymysql.install_as_MySQLdb()
   
+  --这里辅助安装了pillow，和数据库没有关系不过和项目图片处理相关
   
+05、项目结构的设计
+  --创建apps文件夹，将第一个app名为user的文件夹拖入该文件夹中，这里apps用于存放所有app模块
+  --创建extra_apps->文件夹右击->Mark Directory as->Sources Root，如果有别的直接拿过来的功能模块可以放在这里，方便区别和修改功能
+  --创建templates，这里已经由项目自动创建
+  --创建media，存放多媒体资源文件
+  --创建db_tools
+  
+06、多级app使用时，相关路径配置
+  --由于apps 和 extra_apps文件夹不是原生模块app，需要添加文件路径到settings.py中方便我们后续导包和使用
+  --sys.path.insert(0, BASE_DIR)
+  --sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+  --sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
   
   
   
