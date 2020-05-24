@@ -72,7 +72,7 @@
   --sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
   --sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
   
-  
+07、这里使用navicat进行数据库可视化连接  
   
   
 
