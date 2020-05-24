@@ -1,1 +1,173 @@
-01、
+01、django rest framework安装
+  --这里新知识django和django test framework不一样
+  --pip install djangorestframework
+  --pip install markdown django-filter
+  
+02、初始化项目
+  --django-admin startproject MxShop
+  --cd MxShop
+  --django-admin startapp user
+  --mkdir templates
+  --python manage.py runserver  自动创建项目服务器，这个过程会初始化数据库db.sqlite3
+  --python manage.py dbshell  打开本项目的db.sqlite3数据库 | 使用sqlite3 db.sqlite3也可打开该数据库
+    [这两个命令的使用都需要安装sqlite并配置环境变量]
+  --配置数据库，setting.py文件中修改代码
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    } 
+    改为：
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'MxShop',
+            'HOST': '127.0.0.1',
+            'USER': 'root',
+            'PASSWORD': '**********',  #不怕密码泄露，反正你也打不开
+            'PORT': '3306',
+            'options': {'init_command': 'SET storage_engine=INNODB'}  # 设置驱动
+        }
+    }
+    
+    
+
+03、mysql忘记密码设置
+  --当前cmd中net stop mysql
+  --mysqld --console --skip-grant-tables --shared-memory
+  --再打开一个新的cmd，无密码登录MySQL，输入登录命令：mysql -u root -p
+  --输入命令:use mysql;
+            update user set authentication_string='' where user='root';
+            quit;
+  --关闭以-console --skip-grant-tables --shared-memory 启动的MySQL服务
+  --net start mysql  启动MySQL服务，一管理员的身份运行cmd
+  --输入mysql -u root -p
+  --ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码';
+  --quit;
+  --重新登陆：mysql -u root -p
+  --输入密码即可
+  
+04、  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
