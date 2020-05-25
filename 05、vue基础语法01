@@ -1,0 +1,9 @@
+01、插件和组件
+  --插件：一个完整的功能，一个js文件
+  --组件：bootstrap组件，包含各种html css js
+  
+02、webpack：grunt gulp也可以做打包，但是不如webpack
+  --将各种前端文件打包成 js css png html发送给服务器
+  --能够压缩混淆js，减少源码泄露
+  --nodejs 服务器语言
+  --webpack这些打包工具叫做开发依赖，而jar whl js 这些模块包被称为项目依赖
