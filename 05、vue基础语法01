@@ -7,3 +7,64 @@
   --能够压缩混淆js，减少源码泄露
   --nodejs 服务器语言
   --webpack这些打包工具叫做开发依赖，而jar whl js 这些模块包被称为项目依赖
+
+03、v-if 和 v-on
+  --01、条件渲染
+    --v-if: 主要是通过布尔值进行元素的创建和销毁
+    --基本使用: 
+      var app = new Vue({
+        el: "#app",
+        data: {
+          isShow: false
+        }
+      })
+      
+      <div id="app" v-if="isShow"></div>
+    
+  --02、事件点击
+    --v-on: 主要通过绑定事件类型和具体的函数创建动态页面
+    --v-on也等同于@
+      <div id="app">
+        <h1 v-if="isShow">
+          {{ msg }}
+        </h1>
+        <h1>
+          {{ msg1 }}
+        </h1>
+        <button v-on:click="clickChange">点击切换</button>
+        <button @click="clickChange">点击切换</button> //也可以换成@
+     </div>
+     
+     <script>
+         var app = new Vue({
+             el: "#app",
+             data: {
+                 msg: "liming",
+                 msg1: "啦啦啦啦啦啦",
+                 isShow: false
+             },
+             methods: {
+                 clickChange: function(){
+                     this.isShow = !this.isShow;
+                 }
+             } 
+         });
+         console.log(app);
+    </script>
+
+04、
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
