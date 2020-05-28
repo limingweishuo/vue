@@ -188,7 +188,7 @@
     <style>
       ul{width: 180px; overflow: hidden; list-style: none;}
       ul li{float: left; width: 30px; height: 30px; background: purple; margin-left:10px; }
-		</style>
+    </style>
     
     <body>	
       <div id="app" class="lunbo">
@@ -230,7 +230,58 @@
       </script>
     </body>
     
-
+08、轮播图--当鼠标放在图片上时图片静止不动，移除鼠标图片变化
+  --实例：
+    <style>
+      ul{width: 180px;  overflow: hidden;  list-style: none;}
+      ul li{float: left;  width: 30px;  height: 30px;  background: purple;  margin-left:10px;}
+    </style>
+    
+    <div id="app" class="lunbo">
+      <img :src="currentPic" @mouseenter='closeTimer' @mouseleave='openTimer'>
+      <ul>
+        <li v-for='(item, index) in imgArr' @click="changePic(item)">{{index+1}}</li>
+      </ul>
+      <button @click="nextPic">下一张图片</button>
+    </div>
+    
+    <script>
+      var app = new Vue({
+        el:"#app",
+        data:{
+          imgArr:[
+            {id:1, src:'./img/1.jpg'},
+            {id:2, src:'./img/2.jpg'},
+            {id:3, src:'./img/3.jpg'},
+            {id:4, src:'./img/4.jpg'}
+          ],
+          currentPic: './img/1.jpg',
+          currentindex: 0,
+          timer: null
+        },
+        created(){  //生命周期函数，是钩子函数，js自带自加载的函数
+          this.timer = setInterval(this.nextPic, 2000)
+        },
+        methods:{
+          changePic: function(item){
+            this.currentPic = item.src;
+          },
+          nextPic: function(){
+            if(this.currentindex == (this.imgArr.length - 1)){
+              this.currentindex = -1;
+            }
+            this.currentindex++;
+            this.currentPic = this.imgArr[this.currentindex].src;
+          },
+          closeTimer: function(){
+            clearInterval(this.timer);
+          },
+          openTimer: function(){
+            this.timer = setInterval(this.nextPic, 2000);
+          }
+        }
+      })
+    </script>
 
 
 
