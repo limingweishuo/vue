@@ -20,10 +20,21 @@
       })
       
       <div id="app" v-if="isShow"></div>
+      
+    --v-if 和 v-else组合使用
+    --记住v-if v-else之间除v-else-if之外，不能插入别的，且v-if v-else必须成对使用
+      <div v-if="time>20">
+        <h1>时间大于20小时</h1>
+      </div>
+      <div v-else>
+        <h1>时间小于20小时</h1>
+      </div>
     
+    --v-if 和 v-show是都是组件隐藏和展示，不同的是v-if是真正的创建销毁，v-show只是设置display:none属性
   --02、事件点击
     --v-on: 主要通过绑定事件类型和具体的函数创建动态页面
-    --v-on也等同于@
+    --v-on简便写法@
+      v-on:click ==== @click
       <div id="app">
         <h1 v-if="isShow">
           {{ msg }}
@@ -52,15 +63,173 @@
          console.log(app);
     </script>
 
-04、
+04、指令系统--v-bind:绑定标签属性
+  --v-bind：绑定属性，就是本来src style href title这些标签的属性直接写在标签中，现在都是使用v-bind进行绑定
+    --基本格式：v-bind:原来标签属性="属性插值"
+               Vue({el...|data 标签属性: 属性插值})
+    --v-bind简写形式[注意:v-bind和原来标签属性之间没有空隙]
+      v-bind:原来标签属性  -->  :原来标签属性
+    
+    --展示：
+      <div id="app">
+        <h2 v-bind:title="title" v-bind:style="style">啦啦啦啦啦利<h2>
+      </div>
+      
+      var app = new Vue({
+        el: "#app",
+        data: {
+          msg: "liming",
+          msg1: "啦啦啦啦啦啦",
+          isShow: false,
+          title: "哈尼吗",
+          style: "color:blue"
+        },
+        methods: {
+          clickChange: function(){
+            this.isShow = !this.isShow;
+          }
+        } 
+      });
 
+05、指令系统--class style切换
+  --要点一：:class可以增加多个类{box2:isGreen,box3:isBlue}，还可以是数组形式[box1, box3]
+  --要点二：当使用数组添加时，box1对应的value值在css文件中应该有对应，或者说已经被导入
+  --<style>
+      .box{width:100px;height:100px;background:red;}
+			.box2{background:green;}
+			.box3{background:blue;}
+    </style>
+    <body>	
+      <div id="app">
+        <div class="box" :class="{box2:isGreen,box3:isBlue}"></div>
+        <button @click="changecolor">切换颜色</button>
+      </div>		
+      <script>
+        var app = new Vue({
+          el:"#app",
+          data:{
+            isGreen: false,
+            isBlue: true
+          },
+          methods:{
+            changecolor(){
+              this.isBlue = !this.isBlue;
+            }
+          }
+        })
+      </script>
+    </body>
 
+  --按钮实现自增：这里count需要预先添加，代码直接写在@之中
+    <div id="app">
+      <button @click="count+=1">增加{{count}}</button>
+    </div>
+    new Vue({
+      el: "#app",
+      data: {
+        count:0
+      }
+    })
+  --至此三个核心概念：数据驱动视图  双向绑定 声明式代码
+    --声明式：通过简单扫描代码就能够知道在干什么事儿，主要是方便别人查看和版本维护
+    --命令式：[常用的js/jq]只有深入查看才能知道具体动作，维护不方便
 
+06、v-for指令
+  --基本形式：
+    <div v-for="item in items"></div>
+    --items: 一般定义在data中，下面实例是data.imgArr
+    
+  --实例：轮播图
+    <style>
+      ul{width: 180px; overflow: hidden; list-style: none;}
+      ul li{float: left; width: 30px; height: 30px; background: purple; margin-left:10px; }
+		</style>
+    
+    <body>	
+      <div id="app" class="lunbo">
+        <img :src="currentPic">
+        <ul>
+          <li v-for='(item, index) in imgArr' @click="changePic(item)">{{index+1}}</li>
+        </ul>
+        <button @click="nextPic">下一张图片</button>
+      </div>		
+      <script>
+        var app = new Vue({
+          el:"#app",
+          data:{
+            imgArr:[
+              {id:1, src:'./img/1.jpg'},
+              {id:2, src:'./img/2.jpg'},
+              {id:3, src:'./img/3.jpg'},
+              {id:4, src:'./img/4.jpg'}
+            ],
+            currentPic: './img/1.jpg',
+            currentindex: 0,
+          },
+          methods:{
+            changePic: function(item){
+              this.currentPic = item.src;
+            },
+            nextPic: function(){
+              if(this.currentindex == (this.imgArr.length - 1)){
+                this.currentindex = -1;
+              }
+              this.currentindex++;
+              this.currentPic = this.imgArr[this.currentindex].src;
+            }
+          }
+        })
+      </script>
+    </body>
 
-
-
-
-
+7、vue的钩子函数created(){} -- 轮播图实现
+  --created(){}: 钩子函数和生命周期有关，暂时先放在这里，过于深入先不讲
+  --实现：
+    <style>
+      ul{width: 180px; overflow: hidden; list-style: none;}
+      ul li{float: left; width: 30px; height: 30px; background: purple; margin-left:10px; }
+		</style>
+    
+    <body>	
+      <div id="app" class="lunbo">
+        <img :src="currentPic">
+        <ul>
+          <li v-for='(item, index) in imgArr' @click="changePic(item)">{{index+1}}</li>
+        </ul>
+        <button @click="nextPic">下一张图片</button>
+      </div>		
+      <script>
+        var app = new Vue({
+          el:"#app",
+          data:{
+            imgArr:[
+              {id:1, src:'./img/1.jpg'},
+              {id:2, src:'./img/2.jpg'},
+              {id:3, src:'./img/3.jpg'},
+              {id:4, src:'./img/4.jpg'}
+            ],
+            currentPic: './img/1.jpg',
+            currentindex: 0,
+          },
+          created(){
+            setInterval(this.nextPic, 2000)
+          },
+          methods:{
+            changePic: function(item){
+              this.currentPic = item.src;
+            },
+            nextPic: function(){
+              if(this.currentindex == (this.imgArr.length - 1)){
+                this.currentindex = -1;
+              }
+              this.currentindex++;
+              this.currentPic = this.imgArr[this.currentindex].src;
+            }
+          }
+        })
+      </script>
+    </body>
+    
 
 
 
