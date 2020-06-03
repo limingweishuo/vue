@@ -44,12 +44,22 @@
             return self.code
   --在在settings.py中INSTALLED_APPS添加users.apps.UsersConfig
   --此时项目结构如下所示：
-    --
-      --
-      --
-      --
-      --
-      --
+    --MxShop
+      --apps [所有的应用都是存放在这个文件夹中][右击 --> Mark Directory As --> Source Root，将其作为库文件夹]
+             [Mark之后django默认在settings.py文件中加一句sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))]
+        --goods [使用 python manage.py startapp goods 创建的项目app，再将其拖至apps文件夹下]
+        --trade [使用 python manage.py startapp trade 创建的项目app，再将其拖至apps文件夹下]
+        --users [使用 python manage.py startapp users 创建的项目app，再将其拖至apps文件夹下]
+        --user_operation [使用 python manage.py startapp user_operation 创建的项目app，再将其拖至apps文件夹下]
+      --db_tools
+      --extra_apps [存放额外第三方包的文件夹，未安装的库][右击 --> Mark Directory As --> Source Root，将其作为库文件夹]
+                   [Mark之后django默认在settings.py文件中加一句sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))]
+        --DjangoUeditor [一个富文本编辑器]
+      --media
+      --MxShop [项目根目录 | 可以放项目代码，但是暂时不需要]
+      --templates [模板文件存放位置]
+      --db.sqlite3 [sqlite数据库 | 系统自带 | 不一定用得上]
+      --manage.py [存放django框架核心命令的文件]
 
 03、商品数据表设计
 
