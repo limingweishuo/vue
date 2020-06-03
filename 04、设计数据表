@@ -62,6 +62,7 @@
       --manage.py [存放django框架核心命令的文件]
 
 03、商品数据表设计
+  --
 
 04、在settings.py中添加apps
   --INSTALLED_APPS = [
