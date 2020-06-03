@@ -1,0 +1,23 @@
+01、生成迁移文件，迁移文件不代表生成数据表
+  --在创建数据表之前需要提前创建好数据库mxshop，并配置在settings.py中
+  --python manage.py makemigrations
+  --记住这里ForeignField外键需要加入on_delete参数，示例：models.ForeignKey(Goods, verbose_name=u"商品",on_delete=models.DO_NOTHING)
+  
+02、使用迁移文件生成数据表
+  --python manage.py migrate  
+
+03、实际上还可以通过配置数据库，再根据数据表生成对应的model
+  --暂不测试，以后有时间做
+  
+04、修改model之后如何重新生成数据表
+  --auth_[自己默认需要使用的数据的表] 以及 django_[用于存放系统信息的数据表 | django_migrations就是存放数据库迁移信息的系统数据表] 开头的数据表都是系统数据表
+  --
+  
+05、后台管理系统如何放入 及 django rest framework使用
+  --xadmin的功能已经在别的视频中说明完毕，这里需要自己深入学习
+  --将源码中xadmin拷贝至extra_apps中，再将源码中apps下各个项目的adminx.py拷贝至对应项目users user_operation trade goods下
+  --在settings.py下配置
+    INSTALLED_APPS = [
+      'crispy_forms',
+      'xadmin'
+    ]
