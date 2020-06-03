@@ -7,3 +7,17 @@
 03、商品数据表设计
 
 04、添加apps
+  --INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'DjangoUeditor',
+    'users.apps.UsersConfig',
+    'users',
+    'goods',
+    'trade',
+    'user_operation'
+  ]
