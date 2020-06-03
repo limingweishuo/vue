@@ -44,6 +44,12 @@
             return self.code
   --在在settings.py中INSTALLED_APPS添加users.apps.UsersConfig
   --此时项目结构如下所示：
+    --
+      --
+      --
+      --
+      --
+      --
 
 03、商品数据表设计
 
