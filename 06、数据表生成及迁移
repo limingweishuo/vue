@@ -21,3 +21,21 @@
       'crispy_forms',
       'xadmin'
     ]
+  --安装依赖包：
+    pip install xlwt xlsxwriter six future httplib2 django-formtools django-reversion django-import-export django-crispy-forms -i 镜像地址
+  --重新生成数据表
+    --python manage.py makemigrations  # 生成迁移文件
+    --python manage.py migrate  # 生成数据表
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
