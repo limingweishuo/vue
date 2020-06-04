@@ -26,6 +26,11 @@
   --重新生成数据表
     --python manage.py makemigrations  # 生成迁移文件
     --python manage.py migrate  # 生成数据表
+    --这里一堆错误，参考https://www.cnblogs.com/xingfuggz/p/10142388.html
+  --在项目根目录MxShop下的修改path('admin/', admin.site.urls)为path('xadmin/', xadmin.site.urls)
+    
+  --创建超级用户
+    --python manage.py createsuperuser # 输入username[liming] Password[liming]
     
     
     
