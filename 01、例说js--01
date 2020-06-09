@@ -1,0 +1,19 @@
+01、vue说明
+  --*.vue作为一个组件，是vue.js最大的一个特色，被称为单页式的组件，同时承担：视图模板、样式定义、组件代码三个任务
+  --*.vue：一个标准的.vue文件包括：
+          <templates> -- 视图模板 
+          <style> -- 组件样式表
+          <script> -- 组件定义
+          
+    --样式模板：
+      <template>
+        <div id='app'></div>
+      </template>
+      
+      <style></style>
+      
+      <script>
+        export default{
+          name: 'app'
+        }
+      </script>
