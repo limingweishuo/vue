@@ -1,0 +1,117 @@
+--https://github.com/HaoZhang95/Python24  24期视频
+--https://evanli.github.io/programming-book-3/  书籍
+--https://evanli.github.io/programming-book/  书籍
+1、基本功能安排
+    --01、前后端分离
+        使用vue + elementui实现页面展示
+        后端使用python django实现后端数据接口
+    --02、基于ORM框架操作数据库
+        使用ORM模型实现到数据库的增删改查
+    --03、前后端交互
+        前端使用axios和后端接口交互数据
+        
+2、基本功能演示
+    --01、增删改查
+    --02、表格导出成excel，和excel导入
+    --03、模糊查询
+    --04、弹窗展示个人信息：图片 + 输入框形式
+    --05、分页 和 一页展示多少内容
+    --06、批量删除
+    --07、组件销毁和切换
+    --08、数据库 + 后端 + 前端 分布在不同服务器上，相互之间通过python通信交换数据，这里网站中不同服务器通信非常重要，值得注意
+    
+3、项目技术要求
+    --后端：
+        --熟悉各种Python语句
+        --精通Django的Web框架
+    --前端：
+        --熟悉Vue结构和基本框架
+        --熟悉Element UI 和Vue应用
+        
+4、vue开发模式介绍
+    --01、基于CDN进行模块开发
+        --基于CDN引入的Vue、Element、Axios... 的开发
+    --02、基于NPM命令进行开发
+        --基于NPM模块化的开发：Node.js  npm  webpack  vue-cli
+
+5、项目初始化和数据库准备
+  --01、基础创建步骤
+    --django-admin startproject vue_django_学生管理系统
+    --python manage.py startapp student
+    --settings.py中添加INSTALLED_APPS：student
+    --创建templates文件夹
+      --settings.py文件的TEMPLATES加入：
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+      --使用TEMPLATES示例如下：
+        TEMPLATES = [
+            {
+                'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'DIRS': [os.path.join(BASE_DIR, 'templates')],
+                'APP_DIRS': True,
+                'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                    ],
+                },
+            },
+        ]        
+    
+  --02、app项目工程规范化
+    --创建名为apps的python文件夹[含__init__.py]，拖动student文件夹至apps文件夹
+    --mark标记apps文件夹为source root文件夹
+    --在settings.py中添加：
+        --import os, sys  [sys是新加入的]
+        
+        --BASE_DIR = *** ***  # 之前就有的
+        --sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))  # 插入这个路径相当于是不仅需要从根目录下查找app，还需要从该配置路径apps下查找app
+    --加入models.py文件中Student类，记住model中一个类永远对应一个数据表Student
+      from django.db import models
+
+      # Create your models here.
+      # Student: 学号，姓名，性别，出生日期，手机号码，邮箱地址，家庭住址，照片
+
+
+      class Student(models.Model):
+          gender_choices = (('男','男'),('女','女'))
+          sno = models.IntegerField(db_column="SNo", primary_key=True, null=False) # 学号，不允许为空，主键
+          name = models.CharField(db_column="SName", max_length=100, null=False)  # 姓名，最长100个字符，不允许为空
+          gender = models.CharField(db_column="Gender",max_length=100,choices=gender_choices) # 性别，选项选择
+          birthday = models.DateField(db_column="Birthday", null=False) # 出生日期，不允许为空
+          mobile = models.CharField(db_column="Mobile", max_length=100) # 手机号码，
+          email = models.CharField(db_column="Email",max_length=100) # 邮箱地址
+          address = models.CharField(db_column="Address",max_length=200) # 家庭住址
+          image = models.CharField(db_column="Image", max_length=200,null=True) # 照片
+
+          # 在默认情况下，生成的表名：App_class, 如果要自定义 ，需要使用Class Meta来自定义
+          class Meta:
+              managed = True
+              db_table = "Student"
+
+          # __str__方法
+          def __str__(self):
+              return "学号:%s\t姓名:%s\t性别:%s" %(self.sno,self.name,self.gender)
+
+    --
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
